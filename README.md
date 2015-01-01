@@ -11,7 +11,7 @@ Usage
 -----
 
 Enclose the target UI with a `DesignSpecFrameLayout`, usually the root of your view hierarchy.
-Get the associated `DesignSpec` instance with `getDesignSpec` and then you can: 
+Get the associated `DesignSpec` instance with `getDesignSpec` and then you can:
 
  * Toggle baseline grid visibility with `setBaselineGridVisible(boolean)`.
  * Change baseline grid cell width with `setBaselineGridCellSize(int)`.
@@ -51,20 +51,29 @@ You can also specify the design spec in a raw JSON resource like:
 }
 ```
 
+Because `DesignSpec` is a `Drawable`, you can simply add it to a
+`ViewOverlay` if you're running your app on API level >= 18:
+
+```java
+DesignSpec designSpec = DesignSpec.fromResource(someView, R.raw.some_spec);
+someView.getOverlay().add(designSpec);
+```
+
+
 
 Download
 --------
 
 Download [the latest JAR][1] or grab via Gradle:
 ```groovy
-compile 'org.lucasr.dspec:dspec:0.1.0'
+compile 'org.lucasr.dspec:dspec:0.1.1'
 ```
 or Maven:
 ```xml
 <dependency>
   <groupId>org.lucasr.dspec</groupId>
   <artifactId>dspec</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
@@ -88,4 +97,4 @@ License
     limitations under the License.
 
 
- [1]: http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.lucasr.dspec&a=dspec&v=LATEST
+ [1]: https://oss.sonatype.org/service/local/artifact/maven/redirect?r=releases&g=org.lucasr.dspec&a=dspec&e=aar&v=LATEST
